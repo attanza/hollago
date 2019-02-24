@@ -16,10 +16,14 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
+        $allowedRoles = ['superuser', 'administrator'];
         $user = Auth::user();
-            if(!$user->hasRole('administrator')) {
-                abort(403, 'Unauthorized action.');
+        $roles = $user->getRoleNames();
+        foreach ($roles as $role ) {
+            if(in_array($role, $allowedRoles)) {
+                return $next($request);
             }
-        return $next($request);
+        }
+        abort(403, 'Unauthorized action.');
     }
 }

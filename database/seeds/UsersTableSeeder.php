@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
     {
         $faker = Factory::create();
         User::truncate();
-        $roles = ['administrator', 'member'];
+        $roles = ['superuser', 'administrator', 'member'];
         foreach ($roles as $role) {
             User::create([
                 'name' => ucfirst($role),

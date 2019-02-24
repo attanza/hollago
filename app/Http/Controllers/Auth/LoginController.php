@@ -29,7 +29,7 @@ class LoginController extends Controller
     // protected $redirectTo = '/home';
 
     protected function authenticated($request, $user) {
-        if($user->hasRole('administrator')) {
+        if($user->hasRole('administrator') || $user->hasRole('superuser')) {
             return redirect()->route('admin');
         }
         return redirect()->route('home');

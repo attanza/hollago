@@ -17,10 +17,13 @@ class RolesTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Role::truncate();
         Permission::truncate();
+        DB::table('model_has_permissions')->truncate();
+        DB::table('model_has_roles')->truncate();
+        DB::table('role_has_permissions')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
 
-        $roles = ['administrator', 'member'];
+        $roles = ['superuser', 'administrator', 'member'];
         $resources = ['user', 'role', 'permission'];
         $actions = ['read', 'create', 'update', 'delete'];
         foreach ($roles as $role) {
@@ -32,12 +35,13 @@ class RolesTableSeeder extends Seeder
                 Permission::create(['name' => $action . ' ' . $resource]);
             }
         }
-        $user = User::find(1);
-        $role = Role::find(1);
-        $user->assignRole($role);
-        $user = User::find(2);
-        $role = Role::find(2);
-        $user->assignRole($role);
+
+        for ($i=1; $i < 4; $i++) {
+            $user = User::find($i);
+            $role = Role::find($i);
+            $user->assignRole($role);
+        }
+        $role = Role::first();
         $permissions = Permission::all();
         $role->syncPermissions($permissions);
     }
