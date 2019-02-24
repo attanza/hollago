@@ -13,16 +13,15 @@
       <form>
         <v-layout row wrap class="mt-3 px-2">
           <v-flex v-for="(f, index) in fillable" :key="index" sm6 xs12>
-            <span v-if="!inArray(['is_active', 'password'], f.key)">
-              <label>{{ setCase(f.key) }}</label>
-              <v-text-field
-                v-validate="f.rules"
-                v-model="formData[f.key]"
-                :error-messages="errors.collect(f.key)"
-                :name="f.key"
-                :data-vv-name="f.key"
-              />
-            </span>
+            <label>{{ $t(`message.${f.key}`) }}</label>
+            <v-text-field
+              v-validate="f.rules"
+              v-model="formData[f.key]"
+              :error-messages="errors.collect(f.key)"
+              :name="f.key"
+              :data-vv-name="f.key"
+              :data-vv-as="$t(`message.${f.key}`)"
+            />
           </v-flex>
         </v-layout>
       </form>
