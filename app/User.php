@@ -7,11 +7,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Passport\HasApiTokens;
 use App\Traits\Uuids;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles, Uuids;
+    use Notifiable, HasRoles, Uuids, HasApiTokens;
 
     protected $guard_name = 'web';
 

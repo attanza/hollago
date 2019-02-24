@@ -10,5 +10,7 @@
         <li class="breadcrumb-item active">Profile</li>
     </ol>
 
+    <profile-detail></profile-detail>
+
 </div>
 @endsection
