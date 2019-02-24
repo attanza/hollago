@@ -23,6 +23,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.index');
     })->name('admin');
+
+    Route::get('/profile', 'ProfileController@index')->name('admin.profile');
 });
-
-
