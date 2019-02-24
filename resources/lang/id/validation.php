@@ -118,10 +118,6 @@ return [
         'last_name' => 'Nama Belakang',
         'name' => 'Nama',
         'email' => 'Alamat Email',
-        'dob' => 'Tanggal Lahir',
-        'gender' => 'Jenis Kelamin',
-        'terms' => 'Syarat & ketentuan',
-        'dream' => 'Mimpimu',
         'keyword' => 'Kata kunci',
         'title' => 'Judul',
         'description' => 'Deskripsi',
@@ -129,7 +125,11 @@ return [
         'old_password' => 'Password lama',
         'password_confirmation' => 'Konfirmasi Password',
         'address' => 'Alamat',
-        'code' => 'Kode'
+        'code' => 'Kode',
+        'phone' => 'Nomor telpon',
+        'province' => 'Provinsi',
+        'city' => 'Kota',
+        'zip_code' => 'Kode pos'
     ],
 
 ];

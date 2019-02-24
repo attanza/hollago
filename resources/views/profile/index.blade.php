@@ -9,8 +9,9 @@
         </li>
         <li class="breadcrumb-item active">Profile</li>
     </ol>
-
-    <profile-detail></profile-detail>
+    <v-container grid-list-md>
+        <profile-detail :user="{{ Auth::user() }}"></profile-detail>
+    </v-container>
 
 </div>
 @endsection

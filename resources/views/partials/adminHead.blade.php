@@ -14,5 +14,6 @@
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>

@@ -1,14 +1,9 @@
+@import '~vuetify/dist/vuetify.min.css';
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/metroui.scss";
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
-@import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.noty_theme__metroui.noty_bar .noty_body {
+    padding: 1.25em;
+    font-size: 14px;
+    text-align: center;
 }
