@@ -18,7 +18,8 @@ const messages = {
       phone: "Nomor telpon",
       province: "Provinsi",
       city: "Kota",
-      zip_code: "Kode pos"
+      zip_code: "Kode pos",
+      changePassword: 'Change password'
     }
   },
   id: {
@@ -40,7 +41,8 @@ const messages = {
       phone: "Nomor telpon",
       province: "Provinsi",
       city: "Kota",
-      zip_code: "Kode pos"
+      zip_code: "Kode pos",
+      changePassword: 'Ganti Password'
     }
   }
 };

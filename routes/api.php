@@ -7,4 +7,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::middleware('auth:api')->group(function () {
     Route::put('profile/{id}', 'ProfileController@update');
+    Route::put('profile/{id}/change-password', 'ProfileController@changePassword');
 });

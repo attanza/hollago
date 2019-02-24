@@ -2,7 +2,7 @@
   <v-tabs align-with-title color="white">
     <v-tabs-slider color="white"/>
     <v-tab href="#detail">Detail</v-tab>
-    <v-tab href="#changePassword">Change Password</v-tab>
+    <v-tab href="#changePassword">{{ $t("message.changePassword") }}</v-tab>
     <v-tab-item :value="'detail'">
       <detail v-if="currentEdit"/>
     </v-tab-item>

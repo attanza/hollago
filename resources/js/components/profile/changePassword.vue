@@ -8,6 +8,7 @@
               <label>{{ $t(`message.${f.key}`) }}</label>
               <v-text-field
                 v-validate="f.rules"
+                :ref="f.key"
                 v-model="formData[f.key]"
                 :error-messages="errors.collect(f.key)"
                 :name="f.key"
@@ -27,6 +28,9 @@
 </template>
 <script>
 import { global } from "../../mixins";
+import { PROFILE_URL } from "../../utils/apis.js";
+import catchError, { showNoty } from "../../utils/catchError.js";
+
 export default {
   mixins: [global],
   data() {
@@ -58,8 +62,21 @@ export default {
         }
       });
     },
-    saveData() {
-      alert("saved");
+    async saveData() {
+      try {
+        if (this.currentEdit) {
+          const resp = await axios.put(
+            `${PROFILE_URL}/${this.currentEdit.id}/change-password`,
+            this.formData
+          );
+          if (resp.status === 200) {
+            this.formData = {};
+            showNoty("Password updated", "success");
+          }
+        }
+      } catch (e) {
+        catchError(e);
+      }
     }
   }
 };

@@ -1855,7 +1855,18 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _mixins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins */ "./resources/js/mixins/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mixins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins */ "./resources/js/mixins/index.js");
+/* harmony import */ var _utils_apis_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/apis.js */ "./resources/js/utils/apis.js");
+/* harmony import */ var _utils_catchError_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/catchError.js */ "./resources/js/utils/catchError.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
 //
 //
 //
@@ -1884,8 +1895,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mixins: [_mixins__WEBPACK_IMPORTED_MODULE_0__["global"]],
+  mixins: [_mixins__WEBPACK_IMPORTED_MODULE_1__["global"]],
   data: function data() {
     return {
       fillable: [{
@@ -1914,9 +1927,56 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    saveData: function saveData() {
-      alert("saved");
-    }
+    saveData: function () {
+      var _saveData = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var resp;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+
+                if (!this.currentEdit) {
+                  _context.next = 6;
+                  break;
+                }
+
+                _context.next = 4;
+                return axios.put("".concat(_utils_apis_js__WEBPACK_IMPORTED_MODULE_2__["PROFILE_URL"], "/").concat(this.currentEdit.id, "/change-password"), this.formData);
+
+              case 4:
+                resp = _context.sent;
+
+                if (resp.status === 200) {
+                  this.formData = {};
+                  Object(_utils_catchError_js__WEBPACK_IMPORTED_MODULE_3__["showNoty"])("Password updated", "success");
+                }
+
+              case 6:
+                _context.next = 11;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](0);
+                Object(_utils_catchError_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_context.t0);
+
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 8]]);
+      }));
+
+      function saveData() {
+        return _saveData.apply(this, arguments);
+      }
+
+      return saveData;
+    }()
   }
 });
 
@@ -35016,6 +35076,8 @@ var render = function() {
                                 expression: "f.rules"
                               }
                             ],
+                            ref: f.key,
+                            refInFor: true,
                             attrs: {
                               "error-messages": _vm.errors.collect(f.key),
                               name: f.key,
@@ -35205,7 +35267,7 @@ var render = function() {
       _c("v-tab", { attrs: { href: "#detail" } }, [_vm._v("Detail")]),
       _vm._v(" "),
       _c("v-tab", { attrs: { href: "#changePassword" } }, [
-        _vm._v("Change Password")
+        _vm._v(_vm._s(_vm.$t("message.changePassword")))
       ]),
       _vm._v(" "),
       _c(
@@ -74824,7 +74886,7 @@ var messages = {
       name: "Name",
       first_name: "Nama Depan",
       last_name: "Nama Belakang"
-    }, _defineProperty(_message, "name", "Nama"), _defineProperty(_message, "email", "Alamat Email"), _defineProperty(_message, "keyword", "Kata kunci"), _defineProperty(_message, "title", "Judul"), _defineProperty(_message, "description", "Deskripsi"), _defineProperty(_message, "video_link", "Link Video"), _defineProperty(_message, "old_password", "Password lama"), _defineProperty(_message, "password_confirmation", "Konfirmasi Password"), _defineProperty(_message, "address", "Alamat"), _defineProperty(_message, "code", "Kode"), _defineProperty(_message, "phone", "Nomor telpon"), _defineProperty(_message, "province", "Provinsi"), _defineProperty(_message, "city", "Kota"), _defineProperty(_message, "zip_code", "Kode pos"), _message)
+    }, _defineProperty(_message, "name", "Nama"), _defineProperty(_message, "email", "Alamat Email"), _defineProperty(_message, "keyword", "Kata kunci"), _defineProperty(_message, "title", "Judul"), _defineProperty(_message, "description", "Deskripsi"), _defineProperty(_message, "video_link", "Link Video"), _defineProperty(_message, "old_password", "Password lama"), _defineProperty(_message, "password_confirmation", "Konfirmasi Password"), _defineProperty(_message, "address", "Alamat"), _defineProperty(_message, "code", "Kode"), _defineProperty(_message, "phone", "Nomor telpon"), _defineProperty(_message, "province", "Provinsi"), _defineProperty(_message, "city", "Kota"), _defineProperty(_message, "zip_code", "Kode pos"), _defineProperty(_message, "changePassword", 'Change password'), _message)
   },
   id: {
     message: (_message2 = {
@@ -74832,7 +74894,7 @@ var messages = {
       name: "Nama",
       first_name: "Nama Depan",
       last_name: "Nama Belakang"
-    }, _defineProperty(_message2, "name", "Nama"), _defineProperty(_message2, "email", "Alamat Email"), _defineProperty(_message2, "keyword", "Kata kunci"), _defineProperty(_message2, "title", "Judul"), _defineProperty(_message2, "description", "Deskripsi"), _defineProperty(_message2, "video_link", "Link Video"), _defineProperty(_message2, "old_password", "Password lama"), _defineProperty(_message2, "password_confirmation", "Konfirmasi Password"), _defineProperty(_message2, "address", "Alamat"), _defineProperty(_message2, "code", "Kode"), _defineProperty(_message2, "phone", "Nomor telpon"), _defineProperty(_message2, "province", "Provinsi"), _defineProperty(_message2, "city", "Kota"), _defineProperty(_message2, "zip_code", "Kode pos"), _message2)
+    }, _defineProperty(_message2, "name", "Nama"), _defineProperty(_message2, "email", "Alamat Email"), _defineProperty(_message2, "keyword", "Kata kunci"), _defineProperty(_message2, "title", "Judul"), _defineProperty(_message2, "description", "Deskripsi"), _defineProperty(_message2, "video_link", "Link Video"), _defineProperty(_message2, "old_password", "Password lama"), _defineProperty(_message2, "password_confirmation", "Konfirmasi Password"), _defineProperty(_message2, "address", "Alamat"), _defineProperty(_message2, "code", "Kode"), _defineProperty(_message2, "phone", "Nomor telpon"), _defineProperty(_message2, "province", "Provinsi"), _defineProperty(_message2, "city", "Kota"), _defineProperty(_message2, "zip_code", "Kode pos"), _defineProperty(_message2, "changePassword", 'Ganti Password'), _message2)
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (messages);
