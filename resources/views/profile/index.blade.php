@@ -5,7 +5,7 @@
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="/admin">Dashboard</a>
+            <a href="/manage">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">Profile</li>
     </ol>
