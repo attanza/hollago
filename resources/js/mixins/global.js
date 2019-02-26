@@ -1,29 +1,21 @@
-import changeCase from "change-case"
-import Tbtn from "../components/Tbtn"
-import {
-  mapState
-} from 'vuex'
+import changeCase from "change-case";
+import { mapState } from "vuex";
 export default {
-  components: {
-    Tbtn
-  },
   computed: {
-    ...mapState([
-      "currentEdit"
-    ])
+    ...mapState(["currentEdit"])
   },
   methods: {
     inArray(keys, searchedKey) {
-      let result = false
+      let result = false;
       for (let i in keys) {
         if (keys[i] === searchedKey) {
-          result = true
+          result = true;
         }
       }
-      return result
+      return result;
     },
     setCase(txt) {
-      return changeCase.titleCase(txt)
+      return changeCase.titleCase(txt);
     }
-  },
-}
+  }
+};

@@ -19,7 +19,8 @@ const messages = {
       province: "Provinsi",
       city: "Kota",
       zip_code: "Kode pos",
-      changePassword: 'Change password'
+      changePassword: "Change password",
+      updated: "updated"
     }
   },
   id: {
@@ -42,7 +43,8 @@ const messages = {
       province: "Provinsi",
       city: "Kota",
       zip_code: "Kode pos",
-      changePassword: 'Ganti Password'
+      changePassword: "Ganti Password",
+      updated: "diperbaharui"
     }
   }
 };

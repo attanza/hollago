@@ -1,15 +1,38 @@
 <template>
-  <v-tabs align-with-title color="white">
-    <v-tabs-slider color="white"/>
-    <v-tab href="#detail">Detail</v-tab>
-    <v-tab href="#changePassword">{{ $t("message.changePassword") }}</v-tab>
-    <v-tab-item :value="'detail'">
-      <detail v-if="currentEdit"/>
-    </v-tab-item>
-    <v-tab-item :value="'changePassword'">
-      <change-password/>
-    </v-tab-item>
-  </v-tabs>
+  <div>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          id="home-tab"
+          data-toggle="tab"
+          href="#home"
+          role="tab"
+          aria-controls="home"
+          aria-selected="true"
+        >Detail</a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="profile-tab"
+          data-toggle="tab"
+          href="#profile"
+          role="tab"
+          aria-controls="profile"
+          aria-selected="false"
+        >Change Password</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <detail v-if="currentEdit"/>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <change-password></change-password>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import detail from "./detail";

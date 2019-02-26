@@ -1,32 +1,51 @@
 <template>
-  <v-card class="pt-3">
-    <v-container grid-list-md fluid style="padding-top: 0px;">
-      <v-toolbar color="transparent" card>
-        <v-spacer/>
-        <v-btn flat icon @click="setFields">
-          <v-icon>refresh</v-icon>
-        </v-btn>
-        <v-btn flat icon @click="submit">
-          <v-icon>save</v-icon>
-        </v-btn>
-      </v-toolbar>
-      <form>
-        <v-layout row wrap class="mt-3 px-2">
-          <v-flex v-for="(f, index) in fillable" :key="index" sm6 xs12>
-            <label>{{ $t(`message.${f.key}`) }}</label>
-            <v-text-field
+  <form @submit="submit">
+    <div class="card">
+      <div class="card-body">
+        <div class="form-row mt-3">
+          <div class="col-md-6 mb-3" v-for="(f, index) in fillable" :key="index">
+            <label for="validationServer03">{{ $t(`message.${f.key}`) }}</label>
+            <input
+              type="text"
+              :class="{'form-control': true, 'is-invalid': !!errors.first(f.key)}"
               v-validate="f.rules"
               v-model="formData[f.key]"
               :error-messages="errors.collect(f.key)"
               :name="f.key"
               :data-vv-name="f.key"
               :data-vv-as="$t(`message.${f.key}`)"
-            />
-          </v-flex>
-        </v-layout>
-      </form>
-    </v-container>
-  </v-card>
+            >
+            <div class="invalid-feedback">{{ errors.first(f.key) }}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col text-right">
+            <button
+              type="button"
+              class="btn btn-success mr-2"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Refresh form"
+              @click="setFields"
+            >
+              <i class="material-icons">refresh</i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Save"
+              @click="submit"
+            >
+              <i class="material-icons">save</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </template>
 <script>
 import { global } from "../../mixins";
@@ -60,7 +79,9 @@ export default {
       }
       this.errors.clear();
     },
-    submit() {
+    submit(e) {
+      e.preventDefault();
+
       this.$validator.validateAll().then(result => {
         if (result) {
           this.editData();
@@ -76,7 +97,7 @@ export default {
         );
         if (resp.status === 200) {
           this.$store.commit("currentEdit", resp.data);
-          showNoty("Data updated", "success");
+          showNoty("Data " + this.$t("message.updated"), "success");
         }
       } catch (e) {
         catchError(e);
