@@ -14,7 +14,8 @@ export default {
         end_date: null,
         sort_by: null,
         sort_mode: null
-      }
+      },
+      shows: [10, 25, 50, 100]
     };
   },
   computed: {

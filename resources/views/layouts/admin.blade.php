@@ -11,7 +11,6 @@
             <div id="content-wrapper">
                 @yield('content')
             </div>
-    @include('partials.adminFooter')
 
         </div>
 

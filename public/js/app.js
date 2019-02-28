@@ -2542,6 +2542,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2574,25 +2580,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
                 resp = _context.sent;
+                console.log("resp", resp);
 
                 if (resp.status === 200) {
                   this.items = resp.data.data;
                 }
 
-                _context.next = 11;
+                _context.next = 12;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
                 Object(_utils_catchError_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_context.t0);
 
-              case 11:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 8]]);
+        }, _callee, this, [[0, 9]]);
       }));
 
       function populateTable() {
@@ -36032,59 +36039,68 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "row mb-3" }, [
-      _c("div", { staticClass: "col" }),
-      _vm._v(" "),
-      _vm.canCreate
-        ? _c("div", { staticClass: "col text-right" }, [
-            _c("button", { staticClass: "btn btn-success" }, [
-              _vm._v("Create User")
-            ])
-          ])
-        : _vm._e()
-    ]),
+  return _c("div", { staticClass: "card" }, [
+    _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "table-responsive" }, [
-      _c("table", { staticClass: "table table-hover sortable" }, [
-        _c("thead", [
+    _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("table", { staticClass: "table table-hover sortable" }, [
+          _c("thead", [
+            _c(
+              "tr",
+              _vm._l(_vm.headers, function(h, index) {
+                return _c("th", { key: index }, [
+                  _vm._v(_vm._s(_vm.$t("message." + h)))
+                ])
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
           _c(
-            "tr",
-            _vm._l(_vm.headers, function(h, index) {
-              return _c("th", { key: index }, [
-                _vm._v(_vm._s(_vm.$t("message." + h)))
+            "tbody",
+            _vm._l(_vm.items, function(item) {
+              return _c("tr", { key: item.id }, [
+                _c("td", [
+                  _c("a", { attrs: { href: "/manage/users/" + item.uuid } }, [
+                    _vm._v(_vm._s(item.name))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.email))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.phone))]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(_vm._s(item.roles ? _vm.getRoles(item.roles) : ""))
+                ])
               ])
             }),
             0
           )
-        ]),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.items, function(item) {
-            return _c("tr", { key: item.id }, [
-              _c("td", [
-                _c("a", { attrs: { href: "/manage/users/" + item.uuid } }, [
-                  _vm._v(_vm._s(item.name))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.email))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.phone))]),
-              _vm._v(" "),
-              _c("td", [
-                _vm._v(_vm._s(item.roles ? _vm.getRoles(item.roles) : ""))
-              ])
-            ])
-          }),
-          0
-        )
+        ])
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("button", { staticClass: "btn btn-success" }, [_vm._v("add")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("input", { staticClass: "form-control", attrs: { type: "text" } })
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -49751,7 +49767,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         end_date: null,
         sort_by: null,
         sort_mode: null
-      }
+      },
+      shows: [10, 25, 50, 100]
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(["currentEdit"])),
