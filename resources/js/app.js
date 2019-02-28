@@ -2,6 +2,10 @@ require("./bootstrap");
 
 window.Vue = require("vue");
 
+import Vuetify from "vuetify";
+
+Vue.use(Vuetify);
+
 import VeeValidate from "vee-validate";
 
 Vue.use(VeeValidate);
@@ -25,5 +29,18 @@ require("./vueComponents");
 const app = new Vue({
   el: "#app",
   store,
-  i18n
+  i18n,
+  data: () => ({
+    drawer: null
+  }),
+  methods: {
+    logout() {
+      axios
+        .post("/logout")
+        .then(() => {
+          window.location.replace("/login");
+        })
+        .catch(e => console.log(e));
+    }
+  }
 });
