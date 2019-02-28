@@ -23,7 +23,7 @@
 
     <div class="container">
         <div class="card card-login mx-auto mt-5">
-            <div class="card-header">Login</div>
+            <div class="card-header">Holla-Go</div>
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -38,7 +38,7 @@
 
                     <div class="form-group">
                         <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
-                            value="password"  placeholder="password" required> @if ($errors->has('password'))
+                            value="password" placeholder="password" required> @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('password') }}</strong>
                         </span> @endif

@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'province', 'city', 'zip_code', 'address', 'uuid'
+        'name', 'email', 'password', 'phone', 'province', 'city', 'zip_code', 'address'
     ];
 
     /**
@@ -38,4 +38,8 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($pass);
     }
+
+    protected $filter = [
+        'id', 'name', 'email', 'password', 'phone', 'province', 'city', 'zip_code', 'address', 'created_at',
+    ];
 }

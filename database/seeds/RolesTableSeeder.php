@@ -32,11 +32,11 @@ class RolesTableSeeder extends Seeder
 
         foreach ($resources as $resource) {
             foreach ($actions as $action) {
-                Permission::create(['name' => $action . ' ' . $resource]);
+                Permission::create(['name' => $action . '-' . $resource]);
             }
         }
 
-        for ($i=1; $i < 4; $i++) {
+        for ($i = 1; $i < 4; $i++) {
             $user = User::find($i);
             $role = Role::find($i);
             $user->assignRole($role);

@@ -1,12 +1,22 @@
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
-    <li class="nav-item active">
+    <li class="nav-item {{ Request::is('manage') ? 'active' : '' }}">
         <a class="nav-link" href="/manage">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
+            <i class="fas fa-fw fa-tachometer-alt mr-1"></i>
+            <span>Dashboard</span>
+        </a>
     </li>
+    @can('read-user')
+    <li class="nav-item {{ Request::is('manage/users*') ? 'active' : '' }}">
+        <a class="nav-link" href="/manage/users">
+            <i class="fas fa-fw fa-users mr-1"></i>
+            <span>User</span>
+        </a>
+    </li>
+    @endcan
+
     <li class="nav-item dropdown">
+
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
                     <i class="fas fa-fw fa-folder"></i>

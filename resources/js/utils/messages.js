@@ -3,38 +3,27 @@ const messages = {
     message: {
       password: "Password",
       name: "Name",
-      first_name: "Nama Depan",
-      last_name: "Nama Belakang",
-      name: "Nama",
-      email: "Alamat Email",
-      keyword: "Kata kunci",
-      title: "Judul",
-      description: "Deskripsi",
-      video_link: "Link Video",
-      old_password: "Password lama",
-      password_confirmation: "Konfirmasi Password",
-      address: "Alamat",
-      code: "Kode",
-      phone: "Nomor telpon",
-      province: "Provinsi",
-      city: "Kota",
-      zip_code: "Kode pos",
+      email: "Email",
+      description: "Description",
+      old_password: "Old password",
+      password_confirmation: "Password confirmation",
+      address: "Address",
+      code: "Code",
+      phone: "Phone number",
+      province: "Province",
+      city: "City",
+      zip_code: "Zip code",
       changePassword: "Change password",
-      updated: "updated"
+      updated: "updated",
+      role: "Role"
     }
   },
   id: {
     message: {
       password: "Password",
       name: "Nama",
-      first_name: "Nama Depan",
-      last_name: "Nama Belakang",
-      name: "Nama",
-      email: "Alamat Email",
-      keyword: "Kata kunci",
-      title: "Judul",
+      email: "Alamat email",
       description: "Deskripsi",
-      video_link: "Link Video",
       old_password: "Password lama",
       password_confirmation: "Konfirmasi Password",
       address: "Alamat",
@@ -44,7 +33,8 @@ const messages = {
       city: "Kota",
       zip_code: "Kode pos",
       changePassword: "Ganti Password",
-      updated: "diperbaharui"
+      updated: "diperbaharui",
+      role: "Role"
     }
   }
 };
