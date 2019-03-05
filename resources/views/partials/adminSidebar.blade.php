@@ -1,6 +1,7 @@
-<v-navigation-drawer v-model="drawer" fixed app>
+<v-navigation-drawer v-model="drawer" fixed app class="cyan darken-1" dark>
+    <v-toolbar class="cyan darken-1 elevation-0"></v-toolbar>
     <v-list dense>
-        <v-list-tile>
+        <v-list-tile href="/manage">
             <v-list-tile-action>
                 <v-icon>dashboard</v-icon>
             </v-list-tile-action>

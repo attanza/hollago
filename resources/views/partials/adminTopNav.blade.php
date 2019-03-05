@@ -1,4 +1,4 @@
-<v-toolbar fixed app>
+<v-toolbar fixed app v-cloak class="elevation-0">
     <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     <v-toolbar-title>{{ config('app.name') }}</v-toolbar-title>
     <v-spacer></v-spacer>

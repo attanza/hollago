@@ -1,51 +1,56 @@
 <template>
-  <form @submit="submit">
-    <div class="card">
-      <div class="card-body">
-        <div class="form-row mt-3">
-          <div class="col-md-6 mb-3" v-for="(f, index) in fillable" :key="index">
-            <label for="validationServer03">{{ $t(`message.${f.key}`) }}</label>
-            <input
-              type="text"
-              :class="{'form-control': true, 'is-invalid': !!errors.first(f.key)}"
-              v-validate="f.rules"
-              v-model="formData[f.key]"
-              :error-messages="errors.collect(f.key)"
-              :name="f.key"
-              :data-vv-name="f.key"
-              :data-vv-as="$t(`message.${f.key}`)"
-            >
-            <div class="invalid-feedback">{{ errors.first(f.key) }}</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col"></div>
-          <div class="col text-right">
-            <button
-              type="button"
-              class="btn btn-success mr-2"
-              data-toggle="tooltip"
-              data-placement="top"
-              title="Refresh form"
-              @click="setFields"
-            >
-              <i class="material-icons">refresh</i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              data-toggle="tooltip"
-              data-placement="top"
-              title="Save"
-              @click="submit"
-            >
-              <i class="material-icons">save</i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
+  <div>
+    <v-card class="pt-3 elevation-0">
+      <v-container grid-list-md fluid style="padding-top: 0px;">
+        <v-toolbar color="transparent" card>
+          <v-spacer/>
+
+          <Tbtn
+            color="cyan darken-1"
+            dark
+            icon="save"
+            icon-mode
+            tooltip-text="Save"
+            @onClick="submit"
+          />
+          <Tbtn
+            color="cyan darken-1"
+            dark
+            icon="refresh"
+            icon-mode
+            tooltip-text="Refresh"
+            @onClick="setFields"
+          />
+        </v-toolbar>
+        <form>
+          <v-layout row wrap class="mt-3 px-2">
+            <v-flex v-for="(f, index) in fillable" :key="index" sm6 xs12>
+              <span v-if="!inArray(notIncluded, f.key)">
+                <label>{{ setCase(f.key) }}</label>
+                <v-text-field
+                  v-validate="f.rules"
+                  v-model="formData[f.key]"
+                  :error-messages="errors.collect(f.key)"
+                  :name="f.key"
+                  :data-vv-name="f.key"
+                />
+              </span>
+              <span v-if="f.key === 'address'">
+                <label>{{ setCase(f.key) }}</label>
+                <v-textarea
+                  v-validate="f.rules"
+                  v-model="formData[f.key]"
+                  :error-messages="errors.collect(f.key)"
+                  :name="f.key"
+                  :data-vv-name="f.key"
+                />
+              </span>
+            </v-flex>
+          </v-layout>
+        </form>
+      </v-container>
+    </v-card>
+  </div>
 </template>
 <script>
 import { global } from "../../mixins";
@@ -64,7 +69,8 @@ export default {
         { key: "zip_code", value: "", rules: "max:10" },
         { key: "address", value: "", rules: "max:250" }
       ],
-      formData: {}
+      formData: {},
+      notIncluded: ["address"]
     };
   },
   created() {
@@ -79,9 +85,7 @@ export default {
       }
       this.errors.clear();
     },
-    submit(e) {
-      e.preventDefault();
-
+    submit() {
       this.$validator.validateAll().then(result => {
         if (result) {
           this.editData();

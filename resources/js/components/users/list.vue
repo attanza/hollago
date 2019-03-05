@@ -1,36 +1,6 @@
 <template>
-  <div class="card">
-    <div class="card-header">
-      <div class="row">
-        <div class="col-md-6">
-          <button class="btn btn-success">add</button>
-        </div>
-        <div class="col-md-6">
-          <input type="text" class="form-control">
-        </div>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-hover sortable">
-          <thead>
-            <tr>
-              <th v-for="(h, index) in headers" :key="index">{{ $t(`message.${h}`) }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in items" :key="item.id">
-              <td>
-                <a :href="`/manage/users/${item.uuid}`">{{ item.name}}</a>
-              </td>
-              <td>{{ item.email }}</td>
-              <td>{{ item.phone }}</td>
-              <td>{{ item.roles ? getRoles(item.roles): '' }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <div>
+    <v-breadcrumbs :items="breadcrumbs" divider=">" style="margin-top: -20px;"></v-breadcrumbs>
   </div>
 </template>
 <script>
@@ -42,6 +12,18 @@ export default {
   props: ["canCreate"],
   data() {
     return {
+      breadcrumbs: [
+        {
+          text: "Dashboard",
+          disabled: false,
+          href: "/manage"
+        },
+        {
+          text: "Users",
+          disabled: true,
+          href: "/manage/users"
+        }
+      ],
       items: [],
       headers: ["name", "email", "phone", "role"]
     };

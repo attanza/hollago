@@ -11,7 +11,6 @@ use App\User;
 
 class ProfileController extends Controller
 {
-
     public function update(UpdateProfile $request)
     {
         $user = Auth::user();
@@ -27,7 +26,7 @@ class ProfileController extends Controller
             return response()->json(['msg' => 'User not found'], 400);
         }
         $user->update([
-            'password' => bcrypt($request->password)
+            'password' => $request->password
         ]);
         $user->save();
         return response()->json(true, 200);

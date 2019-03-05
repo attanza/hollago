@@ -15,7 +15,10 @@ const messages = {
       zip_code: "Zip code",
       changePassword: "Change password",
       updated: "updated",
-      role: "Role"
+      role: "Role",
+      yes: "Yes",
+      no: "No",
+      confirmMessage: "Are you sure ?"
     }
   },
   id: {
@@ -34,7 +37,10 @@ const messages = {
       zip_code: "Kode pos",
       changePassword: "Ganti Password",
       updated: "diperbaharui",
-      role: "Role"
+      role: "Role",
+      yes: "Ya",
+      no: "Tidak",
+      confirmMessage: "Yakin ?"
     }
   }
 };

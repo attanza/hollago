@@ -1,6 +1,9 @@
 import changeCase from "change-case";
 import { mapState } from "vuex";
+import Tbtn from "../components/Tbtn";
+import Dialog from "../components/Dialog";
 export default {
+  components: { Tbtn, Dialog },
   data() {
     return {
       pagination: {
@@ -15,7 +18,8 @@ export default {
         sort_by: null,
         sort_mode: null
       },
-      shows: [10, 25, 50, 100]
+      shows: [10, 25, 50, 100],
+      showDialog: false
     };
   },
   computed: {

@@ -3,8 +3,12 @@ require("./bootstrap");
 window.Vue = require("vue");
 
 import Vuetify from "vuetify";
-
-Vue.use(Vuetify);
+import colors from "vuetify/es5/util/colors";
+Vue.use(Vuetify, {
+  theme: {
+    primary: colors.cyan.darken1
+  }
+});
 
 import VeeValidate from "vee-validate";
 
