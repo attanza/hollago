@@ -18,7 +18,10 @@ const messages = {
       role: "Role",
       yes: "Yes",
       no: "No",
-      confirmMessage: "Are you sure ?"
+      confirmMessage: "Are you sure ?",
+      roles: "Role",
+      search: "Search",
+      add: "Add"
     }
   },
   id: {
@@ -40,7 +43,10 @@ const messages = {
       role: "Role",
       yes: "Ya",
       no: "Tidak",
-      confirmMessage: "Yakin ?"
+      confirmMessage: "Yakin ?",
+      roles: "Role",
+      search: "Cari",
+      add: "Tambah"
     }
   }
 };

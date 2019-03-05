@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
                 'name' => ucfirst($role),
                 'email' => $role . '@system.com',
                 'password' => 'password',
-                'phone' => $faker->phoneNumber,
+                'phone' => $faker->tollFreePhoneNumber,
             ]);
         }
     }

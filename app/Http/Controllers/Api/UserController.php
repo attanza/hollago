@@ -11,11 +11,17 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $per_page = $request->has('per_page') ? $request->per_page : 10;
-        $sort_by = $request->has('sort_by') ? $request->sort_by : 'id';
-        $sort_mode = $request->has('sort_mode') ? $request->sort_mode : 'desc';
-        $users = User::with('roles')->where(function ($query) {
-        })->orderBy($sort_by, $sort_mode)->paginate($per_page);
+        // sortBy=&descending=false&page=1&rowsPerPage=10&search=admin&totalItems=0&
+        $rowsPerPage = $request->has('per_page') ? $request->per_page : 10;
+        $sortBy = $request->sortBy ? $request->sortBy : 'name';
+        $sortMode = $request->descending ? 'desc' : 'asc';
+        $users = User::with('roles')->where(function ($query) use ($request) {
+            if ($request->has('search')) {
+                $query->where("name", "like", "%$request->search%")
+                ->orWhere("email", "like", "%$request->search%")
+                ->orWhere("phone", "like", "%$request->search%");
+            }
+        })->orderBy($sortBy, $sortMode)->paginate($rowsPerPage);
         return response()->json($users);
     }
 

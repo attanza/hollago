@@ -26,7 +26,7 @@
           <v-layout row wrap class="mt-3 px-2">
             <v-flex v-for="(f, index) in fillable" :key="index" sm6 xs12>
               <span v-if="!inArray(notIncluded, f.key)">
-                <label>{{ setCase(f.key) }}</label>
+                <label>{{ $t(`message.${f.key}`) }}</label>
                 <v-text-field
                   v-validate="f.rules"
                   v-model="formData[f.key]"
@@ -36,7 +36,7 @@
                 />
               </span>
               <span v-if="f.key === 'address'">
-                <label>{{ setCase(f.key) }}</label>
+                <label>{{ $t(`message.${f.key}`) }}</label>
                 <v-textarea
                   v-validate="f.rules"
                   v-model="formData[f.key]"

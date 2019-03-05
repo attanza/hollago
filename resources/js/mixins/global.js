@@ -6,9 +6,15 @@ export default {
   components: { Tbtn, Dialog },
   data() {
     return {
+      loading: false,
+      showForm: false,
+      totalItems: 0,
+      rowsPerPage: [10, 25, 50, 100],
       pagination: {
+        sortBy: "",
+        descending: false,
         page: 1,
-        per_page: 10,
+        rowsPerPage: 10,
         search: null,
         search_by: null,
         search_query: null,
@@ -19,7 +25,8 @@ export default {
         sort_mode: null
       },
       shows: [10, 25, 50, 100],
-      showDialog: false
+      showDialog: false,
+      loading: false
     };
   },
   computed: {
