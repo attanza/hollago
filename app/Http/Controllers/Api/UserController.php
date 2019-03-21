@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         // sortBy=&descending=false&page=1&rowsPerPage=10&search=admin&totalItems=0&
-        $rowsPerPage = $request->has('per_page') ? $request->per_page : 10;
+        $rowsPerPage = $request->has('rowsPerPage') ? $request->rowsPerPage : 10;
         $sortBy = $request->sortBy ? $request->sortBy : 'name';
         $sortMode = $request->descending ? 'desc' : 'asc';
         $users = User::with('roles')->where(function ($query) use ($request) {

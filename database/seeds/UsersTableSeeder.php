@@ -24,5 +24,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => $faker->tollFreePhoneNumber,
             ]);
         }
+
+        factory(App\User::class, 50)->create();
     }
 }
